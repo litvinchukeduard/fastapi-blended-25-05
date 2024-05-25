@@ -1,5 +1,5 @@
 from typing import List
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, ConfigDict, field_validator
 # {
 #     "name": "Pasta Carbonara",
 #     "description": "To make pasta carbonara...",
@@ -20,7 +20,19 @@ class RecipeBaseModel(BaseModel):
     ingredients: List[IngredientBaseModel]
 
     @field_validator('description')
-    def description_is_all_alpha(cls, value):
-        if not value.isalpha():
-            raise ValueError('Description should be all alpha!')
+    def description_length_limited_by_200(cls, value):
+        if len(value) > 200:
+            raise ValueError('Description should be 200 symbols long!')
         return value
+    
+
+class IngredientResponse(IngredientBaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+
+
+class RecipeResponse(RecipeBaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
