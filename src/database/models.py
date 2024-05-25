@@ -12,3 +12,9 @@ class Recipe(Base):
     description = Column(String(255), nullable=False)
 
 # Ingredient (id, name, description)
+
+class Ingredient(Base):
+    __tablename__ = "ingredients"
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100), nullable=False, unique=True)
+    description = Column(String(255), nullable=False)
