@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends
-from sqlalchemy import Session
+from sqlalchemy.orm import Session
 
 import src.repositories.recipes as recipes_repository
 import src.repositories.ingredients as ingredients_repository
 
-from schemas import RecipeBaseModel
+from src.schemas import RecipeBaseModel
 from src.database.db import get_db_connection
 
 router = APIRouter(prefix='/recipes')

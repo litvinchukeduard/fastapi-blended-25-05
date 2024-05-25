@@ -1,4 +1,4 @@
-from sqlalchemy import Session
+from sqlalchemy.orm import Session
 
 from src.database.models import Ingredient
 from src.schemas import IngredientBaseModel
