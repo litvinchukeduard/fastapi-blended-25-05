@@ -21,3 +21,6 @@ POST /api/recipes
 4) Якщо немає, то створюємо та додаємо
 
 GET /api/recipes/{id} /api/recipes/1
+
+POST /api/ingredients 
+{"name": "Pasta", "description": "Regular pasta"}
